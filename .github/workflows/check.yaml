@@ -1,0 +1,30 @@
+name: "Checks"
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  format:
+    name: "Format"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Checkout
+        uses: actions/checkout@v4
+      - name: Running Check
+        uses: astral-sh/ruff-action@v3
+        with:
+          args: "format --check --diff"
+
+  lint:
+    name: "Lint"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Checkout
+        uses: actions/checkout@v4
+      - name: Running Check
+        uses: astral-sh/ruff-action@v3
+        with:
+          args: "check"

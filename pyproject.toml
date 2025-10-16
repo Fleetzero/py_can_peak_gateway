@@ -1,0 +1,28 @@
+[project]
+name = "can-peak-gateway"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Gabriel Guilbert", email = "gabriel.g@fleetzero.com" }
+]
+
+requires-python = ">=3.13"
+dependencies = [
+    "python-can>=4.6.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.8.22,<0.9.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.0",
+]
+
+[tool.ruff]
+line-length = 120
+
+[project.entry-points."can.interface"]
+peak-gateway = "can_peak_gateway:BusPeakGateway"
